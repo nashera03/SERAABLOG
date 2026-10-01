@@ -1,0 +1,538 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fashion Diary | Style Today</title>
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #fffaff;
+  color: #44334f;
+  line-height: 1.6;
+}
+header {
+  background: linear-gradient(90deg, #e9d5f5, #f9d7eb);
+  padding: 20px 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+.logo {
+  font-family: Georgia, serif;
+  font-size: 30px;
+  font-style: italic;
+  color: #813d91;
+  font-weight: bold;
+}
+nav a {
+  text-decoration: none;
+  color: #59336b;
+  margin: 0 10px;
+  font-weight: 600;
+}
+nav a:hover {
+  color: #d34d9d;
+}
+.hero {
+  margin: 25px auto;
+  width: 92%;
+  min-height: 280px;
+  border-radius: 18px;
+  background: linear-gradient(100deg, #e8c9f2, #f8c9e1);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+.hero img {
+  width: 45%;
+  height: 280px;
+  object-fit: cover;
+}
+.hero-text {
+  padding: 30px;
+  text-align: center;
+  flex: 1;
+}
+.hero h1 {
+  color: #873b91;
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+.hero p {
+  margin-bottom: 20px;
+}
+.btn {
+  display: inline-block;
+  background: #bd65a9;
+  color: white;
+  padding: 10px 22px;
+  border-radius: 25px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+.btn:hover {
+  background: #913f91;
+}
+.container {
+  width: 92%;
+  margin: auto;
+}
+.section-title {
+  color: #8e459d;
+  font-size: 25px;
+  margin: 30px 0 20px;
+  border-bottom: 2px solid #e9c4ed;
+  padding-bottom: 8px;
+}
+.layout {
+  display: grid;
+  grid-template-columns: 2.5fr 1fr;
+  gap: 25px;
+}
+.posts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+.post {
+  background: white;
+  border: 1px solid #efd9f0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 3px 12px #ead9ee66;
+  transition: transform .2s;
+}
+.post:hover {
+  transform: translateY(-5px);
+}
+.post img {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+}
+.post-content {
+  padding: 14px;
+}
+.label {
+  display: inline-block;
+  background: #f5c6e2;
+  color: #803c80;
+  padding: 3px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+.post h3 {
+  font-size: 17px;
+  color: #54335e;
+  margin-bottom: 8px;
+}
+.meta {
+  font-size: 12px;
+  color: #9a7b9e;
+  margin-bottom: 8px;
+}
+.post p {
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+.read {
+  color: #b34d9c;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 13px;
+}
+.sidebar section {
+  background: white;
+  border: 1px solid #eed9f1;
+  border-radius: 12px;
+  padding: 18px;
+  margin-bottom: 18px;
+  box-shadow: 0 3px 12px #ead9ee44;
+}
+.sidebar h3 {
+  color: #8e459d;
+  margin-bottom: 12px;
+}
+.sidebar p, .sidebar li {
+  font-size: 14px;
+}
+.sidebar ul {
+  list-style: none;
+}
+.sidebar li {
+  padding: 5px 0;
+  border-bottom: 1px solid #f4e6f4;
+}
+.search {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #dcb9e5;
+  border-radius: 20px;
+  outline: none;
+  margin-bottom: 10px;
+}
+.info {
+  margin: 35px 0;
+  background: linear-gradient(110deg, #f4e3fa, #fce0ee);
+  padding: 30px;
+  border-radius: 15px;
+}
+.info h2 {
+  text-align: center;
+  color: #873b91;
+  margin-bottom: 20px;
+}
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.info-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+}
+.info-card h3 {
+  color: #b04c9e;
+  margin-bottom: 10px;
+}
+.info-card p, .info-card li {
+  font-size: 14px;
+}
+.info-card ul {
+  padding-left: 18px;
+}
+.comments {
+  background: white;
+  padding: 25px;
+  border: 1px solid #eac9ed;
+  border-radius: 15px;
+  margin: 30px 0;
+}
+.comments h2 {
+  color: #8e459d;
+  margin-bottom: 15px;
+}
+.comments input, .comments textarea {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border: 1px solid #dcb9e5;
+  border-radius: 8px;
+  font-family: inherit;
+}
+.comments textarea {
+  min-height: 100px;
+}
+.comment-item {
+  background: #fcf2fc;
+  padding: 12px;
+  border-radius: 8px;
+  margin-top: 12px;
+}
+footer {
+  background: linear-gradient(90deg, #a95bb0, #d17ab2);
+  color: white;
+  text-align: center;
+  padding: 25px;
+  margin-top: 30px;
+}
+footer a {
+  color: white;
+  text-decoration: none;
+  margin: 0 8px;
+}
+@media(max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+  .posts {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media(max-width: 600px) {
+  header {
+    justify-content: center;
+    text-align: center;
+  }
+  nav a {
+    display: inline-block;
+    margin: 5px;
+  }
+  .hero {
+    flex-direction: column;
+  }
+  .hero img {
+    width: 100%;
+    height: 200px;
+  }
+  .hero h1 {
+    font-size: 28px;
+  }
+  .posts, .info-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Fashion Diary ♡</div>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#artikel">Artikel</a>
+    <a href="#tentang">Tentang</a>
+    <a href="#komentar">Komentar</a>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=900"
+       alt="Inspirasi fashion">
+  <div class="hero-text">
+    <h1>Welcome to Fashion Diary ♡</h1>
+    <p>Temukan inspirasi gaya, tips fashion, dan tren terbaru untuk tampil percaya diri setiap hari!</p>
+    <a href="#artikel" class="btn">Jelajahi Artikel →</a>
+  </div>
+</section>
+
+<div class="container">
+  <h2 class="section-title" id="artikel">✿ Artikel Fashion Terbaru</h2>
+
+  <div class="layout">
+    <main class="posts">
+
+      <article class="post">
+        <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=700"
+             alt="Outfit hijab">
+        <div class="post-content">
+          <span class="label">Fashion</span>
+          <h3>5 Outfit Hijab Casual untuk Hangout</h3>
+          <div class="meta">1 Oktober 2026 | 0 Komentar</div>
+          <p>Tampil stylish saat hangout tidak harus ribet. Yuk, intip lima inspirasi outfit hijab casual yang nyaman dan kekinian.</p>
+          <a href="#komentar" class="read">Baca Selengkapnya →</a>
+        </div>
+      </article>
+
+      <article class="post">
+        <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=700"
+             alt="Pakaian warna pastel">
+        <div class="post-content">
+          <span class="label">Tren</span>
+          <h3>Warna Pastel yang Wajib Kamu Coba</h3>
+          <div class="meta">28 September 2026 | 0 Komentar</div>
+          <p>Warna pastel memberikan kesan lembut dan elegan. Simak cara memadukan warna lilac, pink, dan cream.</p>
+          <a href="#komentar" class="read">Baca Selengkapnya →</a>
+        </div>
+      </article>
+
+      <article class="post">
+        <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=700"
+             alt="Tas fashion">
+        <div class="post-content">
+          <span class="label">Aksesori</span>
+          <h3>10 Aksesori Fashion untuk Tampil Menarik</h3>
+          <div class="meta">25 September 2026 | 0 Komentar</div>
+          <p>Aksesori bisa membuat penampilan semakin menarik. Mulai dari tas, jam tangan hingga kacamata.</p>
+          <a href="#komentar" class="read">Baca Selengkapnya →</a>
+        </div>
+      </article>
+
+      <article class="post">
+        <img src="https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?w=700"
+             alt="Perawatan kecantikan">
+        <div class="post-content">
+          <span class="label">Beauty</span>
+          <h3>Skincare Rutin untuk Kulit Glowing</h3>
+          <div class="meta">20 September 2026 | 0 Komentar</div>
+          <p>Rawat kulit dengan rutinitas sederhana. Kenali langkah dasar untuk menjaga kulit tetap sehat.</p>
+          <a href="#komentar" class="read">Baca Selengkapnya →</a>
+        </div>
+      </article>
+
+      <article class="post">
+        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=700"
+             alt="Meja kerja">
+        <div class="post-content">
+          <span class="label">Lifestyle</span>
+          <h3>Ide Outfit ke Kampus yang Nyaman</h3>
+          <div class="meta">18 September 2026 | 0 Komentar</div>
+          <p>Tampil rapi dan nyaman saat kuliah. Berikut beberapa ide outfit yang bisa kamu coba setiap hari.</p>
+          <a href="#komentar" class="read">Baca Selengkapnya →</a>
+        </div>
+      </article>
+
+      <article class="post">
+        <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=700"
+             alt="Inspirasi pakaian">
+        <div class="post-content">
+          <span class="label">Tips</span>
+          <h3>Mix and Match Pakaian agar Stylish</h3>
+          <div class="meta">15 September 2026 | 0 Komentar</div>
+          <p>Ingin tampil fashionable tanpa membeli banyak baju? Coba tips mix and match pakaian berikut ini.</p>
+          <a href="#komentar" class="read">Baca Selengkapnya →</a>
+        </div>
+      </article>
+
+    </main>
+
+    <aside class="sidebar">
+      <section id="tentang">
+        <h3>♡ Tentang Blog</h3>
+        <p>Fashion Diary adalah blog yang membahas fashion, kecantikan, dan gaya hidup. Temukan inspirasi, tips, serta rekomendasi menarik untuk penampilanmu setiap hari!</p>
+      </section>
+
+      <section>
+        <h3>▣ Kategori</h3>
+        <ul>
+          <li>Fashion</li>
+          <li>Beauty</li>
+          <li>Lifestyle</li>
+          <li>Tips Fashion</li>
+          <li>Tren Terbaru</li>
+          <li>Aksesori</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>★ Cari Artikel</h3>
+        <input class="search" id="search" type="text"
+               placeholder="Cari artikel...">
+        <button class="btn" onclick="searchPosts()">Cari</button>
+        <button class="btn" onclick="showAll()" style="margin-top:5px">Tampilkan Semua</button>
+      </section>
+    </aside>
+  </div>
+
+  <section class="info">
+    <h2>Informasi Blog Fashion Diary ♡</h2>
+    <div class="info-grid">
+      <div class="info-card">
+        <h3>1. Manfaat Blog bagi Bisnis Fashion</h3>
+        <ul>
+          <li>Meningkatkan brand awareness.</li>
+          <li>Memperkenalkan produk fashion kepada pelanggan.</li>
+          <li>Membangun kepercayaan konsumen.</li>
+          <li>Meningkatkan kunjungan ke toko online.</li>
+          <li>Menjadi media promosi produk.</li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <h3>2. Fitur Blogger untuk Bisnis</h3>
+        <ul>
+          <li>Template untuk mempercantik tampilan blog.</li>
+          <li>Label untuk mengelompokkan artikel.</li>
+          <li>Postingan untuk mempromosikan produk.</li>
+          <li>Kolom komentar untuk berinteraksi dengan pelanggan.</li>
+          <li>Statistik untuk melihat jumlah pengunjung.</li>
+          <li>Pengaturan SEO untuk membantu artikel ditemukan di Google.</li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <h3>3. Fitur Komentar Sudah Tersedia</h3>
+        <p>Blog Fashion Diary sudah menyediakan kolom komentar. Pengunjung dapat memberikan pendapat, bertanya mengenai artikel, dan menyampaikan saran.</p>
+        <p style="margin-top:10px">Fitur komentar membantu pemilik blog berinteraksi dengan pembaca dan calon pelanggan.</p>
+        <a href="#komentar" class="btn" style="margin-top:12px">Tinggalkan Komentar →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="comments" id="komentar">
+    <h2>♡ Tinggalkan Komentar</h2>
+    <p>Bagikan pendapat dan saran kamu tentang artikel Fashion Diary!</p>
+    <form id="commentForm">
+      <input type="text" id="nama" placeholder="Nama kamu" required>
+      <textarea id="pesan" placeholder="Tulis komentar kamu..." required></textarea>
+      <button type="submit" class="btn">Kirim Komentar</button>
+    </form>
+    <div id="commentList">
+      <p style="margin-top:15px;color:#987b9e">
+        Belum ada komentar. Jadilah yang pertama berkomentar!
+      </p>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <h2>Fashion Diary ♡</h2>
+  <p>Style Today, Better Tomorrow</p>
+  <p style="margin-top:10px">
+    <a href="#home">Home</a> |
+    <a href="#artikel">Artikel</a> |
+    <a href="#tentang">Tentang</a> |
+    <a href="#komentar">Komentar</a>
+  </p>
+  <p style="margin-top:15px">© 2026 Fashion Diary. All Rights Reserved.</p>
+</footer>
+
+<script>
+function searchPosts() {
+  const keyword = document.getElementById("search")
+    .value.toLowerCase();
+  const posts = document.querySelectorAll(".post");
+
+  posts.forEach(post => {
+    const text = post.innerText.toLowerCase();
+    post.style.display = text.includes(keyword) ? "" : "none";
+  });
+}
+
+function showAll() {
+  document.getElementById("search").value = "";
+  document.querySelectorAll(".post").forEach(post => {
+    post.style.display = "";
+  });
+}
+
+document.getElementById("search").addEventListener("keyup", searchPosts);
+
+document.getElementById("commentForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const nama = document.getElementById("nama").value.trim();
+  const pesan = document.getElementById("pesan").value.trim();
+
+  if (!nama || !pesan) return;
+
+  const list = document.getElementById("commentList");
+
+  if (list.innerText.includes("Belum ada komentar")) {
+    list.innerHTML = "";
+  }
+
+  const item = document.createElement("div");
+  item.className = "comment-item";
+
+  const name = document.createElement("strong");
+  name.textContent = nama;
+
+  const message = document.createElement("p");
+  message.textContent = pesan;
+
+  item.appendChild(name);
+  item.appendChild(message);
+  list.prepend(item);
+
+  this.reset();
+});
+</script>
+
+</body>
+</html>
+```
